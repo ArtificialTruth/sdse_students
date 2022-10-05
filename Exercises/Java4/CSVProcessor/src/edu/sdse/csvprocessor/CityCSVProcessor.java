@@ -11,8 +11,9 @@ public class CityCSVProcessor {
 		//Try with resource statement (as of Java 8)
 		try (BufferedReader br = new BufferedReader(new FileReader(file))) {
 			//Discard header row
-			br.readLine();
-			
+			String[] header = br.readLine().trim().split(",");
+			new CityRecord(header); // Make header shared for all instances of CityRecord
+
 			String line;
 			
 			while ((line = br.readLine()) != null) {
@@ -27,7 +28,7 @@ public class CityCSVProcessor {
 				CityRecord cr = new CityRecord(id, year, city, population);
 				
 				System.out.println(cr);
-				System.out.println("id: " + id + ", year: " + year + ", city: " + city + ", population: " + population);
+				//System.out.println("id: " + id + ", year: " + year + ", city: " + city + ", population: " + population);
 				
 				//TODO: Extend the program to process entries!
 			}
