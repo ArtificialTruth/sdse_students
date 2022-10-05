@@ -4,6 +4,7 @@ import java.io.BufferedReader;
 import java.io.File;
 import java.io.FileReader;
 
+
 public class CityCSVProcessor {
 	
 	public void readAndProcess(File file) {
@@ -22,7 +23,10 @@ public class CityCSVProcessor {
 				int year = convertToInt(rawValues[1]);
 				String city = convertToString(rawValues[2]);
 				int population = convertToInt(rawValues[3]);
+
+				CityRecord cr = new CityRecord(id, year, city, population);
 				
+				System.out.println(cr);
 				System.out.println("id: " + id + ", year: " + year + ", city: " + city + ", population: " + population);
 				
 				//TODO: Extend the program to process entries!
@@ -55,7 +59,7 @@ public class CityCSVProcessor {
 	public static final void main(String[] args) {
 		CityCSVProcessor reader = new CityCSVProcessor();
 		
-		File dataDirectory = new File("data/");
+		File dataDirectory = new File("Exercises/Java4/CSVProcessor/data/");
 		File csvFile = new File(dataDirectory, "Cities.csv");
 		
 		reader.readAndProcess(csvFile);
